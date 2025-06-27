@@ -1102,7 +1102,7 @@ message MeshPacket {
    * (values must be <= 127 to keep protobuf field to one byte in size.
    * Detailed background on this field:
    * I noticed a funny side effect of lora being so slow: Usually when making
-   * a protocol there isn’t much need to use message priority to change the order
+   * a protocol there isn't much need to use message priority to change the order
    * of transmission (because interfaces are fairly fast).
    * But for lora where packets can take a few seconds each, it is very important
    * to make sure that critical packets are sent ASAP.
@@ -1961,7 +1961,7 @@ message DeviceMetadata {
   bool hasEthernet = 6;
 
   /*
-   * Indicates that the device's role in the mesh
+   * Indicates the device's role in the mesh
    */
   Config.DeviceConfig.Role role = 7;
 
@@ -1990,6 +1990,41 @@ message DeviceMetadata {
    * (bitwise OR of ExcludedModules)
    */
   uint32 excluded_modules = 12;
+}
+
+/*
+ * Antenna information message for sharing antenna details across the mesh
+ */
+message AntennaInfo {
+  /*
+   * The node ID of the node sending antenna information
+   */
+  uint32 node_id = 1;
+
+  /*
+   * Antenna height in meters above ground level
+   */
+  float height_m = 2;
+
+  /*
+   * Antenna azimuth in degrees (0-360, where 0 is North)
+   */
+  uint32 azimuth_degrees = 3;
+
+  /*
+   * Antenna orientation (0=vertical, 90=horizontal, etc.)
+   */
+  uint32 orientation_degrees = 4;
+
+  /*
+   * Effective Isotropic Radiated Power (EIRP) in dBm
+   */
+  float eirp_dbm = 5;
+
+  /*
+   * Timestamp when this information was last updated
+   */
+  fixed32 last_updated = 6;
 }
 
 /*

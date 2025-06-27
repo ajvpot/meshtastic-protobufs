@@ -145,6 +145,47 @@ message ModuleConfig {
   }
 
   /*
+   * AntennaInfoModule Config
+   */
+  message AntennaInfoConfig {
+    /*
+     * Whether the Module is enabled
+     */
+    bool enabled = 1;
+
+    /*
+     * Interval in seconds of how often we should try to send our
+     * Antenna Info (minimum is 3600, i.e., 1 hour)
+     */
+    uint32 update_interval = 2;
+
+    /*
+     * Antenna height in meters above ground level
+     */
+    float height_m = 3;
+
+    /*
+     * Antenna azimuth in degrees (0-360, where 0 is North)
+     */
+    uint32 azimuth_degrees = 4;
+
+    /*
+     * Antenna orientation in degrees (0=vertical, 90=horizontal, etc.)
+     */
+    uint32 orientation_degrees = 5;
+
+    /*
+     * Effective Isotropic Radiated Power (EIRP) in dBm
+     */
+    float eirp_dbm = 6;
+
+    /*
+     * Whether in addition to sending it to MQTT and the PhoneAPI, our AntennaInfo should be transmitted over LoRa.
+     */
+    bool transmit_over_lora = 7;
+  }
+
+  /*
    * Detection Sensor Module Config
    */
   message DetectionSensorConfig {
@@ -816,6 +857,11 @@ message ModuleConfig {
      * TODO: REPLACE
      */
     PaxcounterConfig paxcounter = 13;
+
+    /*
+     * TODO: REPLACE
+     */
+    AntennaInfoConfig antenna_info = 14;
   }
 }
 
