@@ -152,6 +152,11 @@ message AdminMessage {
      * TODO: REPLACE
      */
     PAXCOUNTER_CONFIG = 12;
+
+    /*
+     * TODO: REPLACE
+     */
+    ANTENNAINFO_CONFIG = 13;
   }
 
   enum BackupLocation {
